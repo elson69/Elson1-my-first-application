@@ -17,8 +17,7 @@
             <!-- Navigation -->
             <nav class="space-x-6">
                 <a href="/" class="text-gray-700 hover:text-blue-600 font-medium">Home</a>
-                <a href="/about" class="text-gray-700 hover:text-blue-600 font-medium">About</a>
-                <a href="/contact" class="text-gray-700 hover:text-blue-600 font-medium">Contact</a>
+                <a href="/jobs" class="text-gray-700 hover:text-blue-600 font-medium">Jobs</a>
             </nav>
         </div>
     </header>
