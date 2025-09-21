@@ -2,22 +2,21 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Employer;
+use App\Models\Job;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // Create 10 employers
+        $employers = Employer::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // Create 50 jobs and randomly assign them to the 10 employers
+        Job::factory(50)->make()->each(function ($job) use ($employers) {
+            $job->employer_id = $employers->random()->id;
+            $job->save();
+        });
     }
 }

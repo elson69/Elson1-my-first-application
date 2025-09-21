@@ -3,22 +3,21 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\Job;
 
+// Home Page
 Route::get('/', function () {
     return view('home');
 });
 
 // All Jobs
 Route::get('/jobs', function () {
-    return view('jobs', [
-        'jobs' => Job::all()
-    ]);
+    $jobs = Job::all(); // fetch all jobs
+    return view('jobs', compact('jobs')); // pass to view
 });
 
-// Single Job
+// Single Job (dynamic page)
 Route::get('/jobs/{id}', function ($id) {
-    return view('job', [
-        'job' => Job::find($id)
-    ]);
+    $job = Job::findOrFail($id); // find job or show 404
+    return view('job', compact('job'));
 });
 
 
